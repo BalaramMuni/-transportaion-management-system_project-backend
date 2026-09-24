@@ -48,7 +48,7 @@ const PORT = process.env.PORT || 4000;
 
 connectDB()
   .then(() => {
-    app.listen(PORT, () => console.log(`[server] TransitOps API running on http://localhost:${PORT}`));
+    app.listen(PORT,'0.0.0.0', () => console.log(`[server] TransitOps API running on http://localhost:${PORT}`));
   })
   .catch((err) => {
     console.error('[server] Failed to connect to MongoDB:', err.message);
