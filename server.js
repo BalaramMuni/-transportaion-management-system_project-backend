@@ -15,19 +15,7 @@ import reportRoutes from './src/routes/reports.js';
 
 const app = express();
 
-const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173')
-  .split(',')
-  .map((o) => o.trim());
-
-app.use(
-  cors({
-    origin(origin, callback) {
-      // allow non-browser tools (curl/Postman) which send no origin header
-      if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
-      callback(new Error('Not allowed by CORS'));
-    },
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
